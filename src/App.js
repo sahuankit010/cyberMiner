@@ -21,18 +21,10 @@ class App extends React.Component {
   searchTypes = ['OR', 'AND', 'NOT']
   pageOptions = [1, 2, 3]
 
-  getSearchValue() {
-    return this.state.searchValue;
-  }
-
   setSearchValue = (value) => {
     this.setState({
       searchValue: value
     });
-  }
-
-  getIsAlphabetical() {
-    return this.state.isAlphabetical;
   }
 
   setIsAlphabetical = (value) => {
@@ -41,28 +33,16 @@ class App extends React.Component {
     });
   }
 
-  getIsFiltered() {
-    return this.state.isFiltered;
-  }
-
   setIsFiltered = (value) => {
     this.setState({
       isFiltered: value
     });
   }
 
-  getNumerPerPage() {
-    return this.state.numberPerPage;
-  }
-
   setNumberPerPage = (value) => {
     this.setState({
       numberPerPage: value
     });
-  }
-
-  getSearchType() {
-    return this.state.searchType;
   }
 
   setSearchType = (value) => {
