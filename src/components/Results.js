@@ -1,5 +1,8 @@
 import React from 'react';
 import websites from '../Websites'
+import styles from "../App.css";
+import Table from "./Table";
+
 class Results extends React.Component {
   constructor(props) {
     super(props);
@@ -64,13 +67,11 @@ class Results extends React.Component {
   render() {
     return (
       <div>
-        {this.state.results.map((website) => (
-          <div style={{ padding: '10px' }} key={website.URL}>
-            <span>{website.description}&nbsp;&nbsp;</span>
-            <a href={website.URL} >{website.URL}</a>
-            <br></br>
+        <main className={styles.container}>
+          <div className={styles.wrapper}>
+            <Table data={this.state.results} rowsPerPage={4} />
           </div>
-        ))}
+        </main>
       </div>
     );
   }
