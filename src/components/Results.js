@@ -1,5 +1,4 @@
 import React from 'react';
-import websites from '../Websites'
 import styles from "../App.css";
 import Table from "./Table";
 
@@ -9,6 +8,14 @@ class Results extends React.Component {
     this.state = {
       results: []
     };
+  }
+
+  deleteWebsite = (websiteUrl) => {
+    this.props.setCurrentWebsites(websiteUrl);
+  }
+
+  clickedURL = (websiteUrl) => {
+   this.props.increaseAccessCount(websiteUrl);
   }
 
   componentDidUpdate(prevProps) {
@@ -31,36 +38,41 @@ class Results extends React.Component {
 
     switch (this.props.searchType) {
       case 'OR':
-        filteredWebsites = websites.data.filter((website) => {
+        filteredWebsites = this.props.currentWebsites.filter((website) => {
           return searchValueArray.some(word => website.description.includes(word));
         })
         break;
       case 'AND':
-        filteredWebsites = websites.data.filter((website) => {
+        filteredWebsites = this.props.currentWebsites.filter((website) => {
           return searchValueArray.every(word => website.description.includes(word));
         })
         break;
       case 'NOT':
-        filteredWebsites = websites.data.filter((website) => {
+        filteredWebsites = this.props.currentWebsites.filter((website) => {
           return !searchValueArray.some(word => website.description.includes(word));
         })
         break;
       default:
-        filteredWebsites = websites.data.filter((website) => {
+        filteredWebsites = this.props.currentWebsites.filter((website) => {
           return searchValueArray.some(word => website.description.includes(word));
         })
     }
 
-    if (this.props.isAlphabetical) { filteredWebsites.sort(this.compare) }
+    if (this.props.isAlphabetical) { filteredWebsites.sort(this.compareURL) }
+    if (this.props.isFrequentlyAccessed) { filteredWebsites.sort(this.compareAccess) }
 
     this.setState({ results: filteredWebsites });
-
-    console.log("search value is " + searchValue + " and " + this.props.numberPerPage + " results per page and alpha is " + this.props.isAlphabetical + " and filtered is " + this.props.isFiltered + " and search type is " + this.props.searchType);
   }
 
-  compare(a, b) {
+  compareURL(a, b) {
     if (a.URL < b.URL) { return -1 }
     if (a.URL > b.URL) { return 1 }
+    return 0;
+  }
+
+  compareAccess(a, b) {
+    if (a.timesAccessed < b.timesAccessed) { return 1 }
+    if (a.timesAccessed > b.timesAccessed) { return -1 }
     return 0;
   }
 
@@ -69,7 +81,7 @@ class Results extends React.Component {
       <div>
         <main className={styles.container}>
           <div className={styles.wrapper}>
-            <Table data={this.state.results} rowsPerPage={4} />
+            <Table data={this.state.results} rowsPerPage={this.props.numberPerPage} deleteWebsite={this.deleteWebsite} clickedURL={this.clickedURL} />
           </div>
         </main>
       </div>
