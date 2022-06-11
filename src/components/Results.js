@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../App.css";
-import Table from "./Table";
+import Table from "./Table/Table.jsx";
 
 class Results extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Results extends React.Component {
   }
 
   clickedURL = (websiteUrl) => {
-   this.props.increaseAccessCount(websiteUrl);
+    this.props.increaseAccessCount(websiteUrl);
   }
 
   componentDidUpdate(prevProps) {
@@ -61,7 +61,12 @@ class Results extends React.Component {
     if (this.props.isAlphabetical) { filteredWebsites.sort(this.compareURL) }
     if (this.props.isFrequentlyAccessed) { filteredWebsites.sort(this.compareAccess) }
 
-    this.setState({ results: filteredWebsites });
+    if (this.props.searchValue === '') {
+      this.setState({ results: [] });
+
+    } else {
+      this.setState({ results: filteredWebsites });
+    }
   }
 
   compareURL(a, b) {

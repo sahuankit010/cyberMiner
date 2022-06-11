@@ -14,14 +14,14 @@ class CyberMiner extends React.Component {
             isAlphabetical: false,
             isFrequentlyAccessed: false,
             isFiltered: false,
-            numberPerPage: 2,
-            searchType: 'OR',
+            numberPerPage: 3,
+            searchType: 'AND',
             currentWebsites: websites.data,
         };
     }
 
-    searchTypes = ['OR', 'AND', 'NOT']
-    pageOptions = [2, 5, 10]
+    searchTypes = ['AND', 'OR', 'NOT']
+    pageOptions = [3, 5, 10]
     suggestions = websites.data.map(website => {
         return website.description;
     })
@@ -77,24 +77,26 @@ class CyberMiner extends React.Component {
                 <div><Autocomplete suggestions={this.suggestions} setSearchValue={this.setSearchValue}></Autocomplete></div>
                 <div>
                     <label>Alphabetical Results:<CheckBox setAttribute={this.setIsAlphabetical}></CheckBox></label>
-                    <label>Frequently Accessed:<CheckBox setAttribute={this.setIsFrequentlyAccessed}></CheckBox></label>
+                    <label className="Element">Frequently Accessed:<CheckBox setAttribute={this.setIsFrequentlyAccessed}></CheckBox></label>
                     <label>&nbsp;Filter out symbols:<CheckBox setAttribute={this.setIsFiltered}></CheckBox></label>
                 </div>
                 <div>
-                    <label> Search Type:&nbsp;<DropDown setAttribute={this.setSearchType} options={this.searchTypes}></DropDown></label>
-                    <label> &nbsp;Results Per Page:&nbsp;<DropDown setAttribute={this.setNumberPerPage} options={this.pageOptions}></DropDown></label>
+                    <label className="Element"> Search Type:&nbsp;<DropDown setAttribute={this.setSearchType} options={this.searchTypes}></DropDown></label>
+                    <label > &nbsp;Results Per Page:&nbsp;<DropDown setAttribute={this.setNumberPerPage} options={this.pageOptions}></DropDown></label>
                 </div>
-                <Results
-                    searchValue={this.state.searchValue}
-                    isAlphabetical={this.state.isAlphabetical}
-                    isFrequentlyAccessed={this.state.isFrequentlyAccessed}
-                    isFiltered={this.state.isFiltered}
-                    numberPerPage={this.state.numberPerPage}
-                    searchType={this.state.searchType}
-                    currentWebsites={this.props.currentWebsites}
-                    increaseAccessCount={this.increaseAccessCount}
-                    setCurrentWebsites={this.setCurrentWebsites}>
-                </Results>
+                <div className="Element">
+                    <Results
+                        searchValue={this.state.searchValue}
+                        isAlphabetical={this.state.isAlphabetical}
+                        isFrequentlyAccessed={this.state.isFrequentlyAccessed}
+                        isFiltered={this.state.isFiltered}
+                        numberPerPage={this.state.numberPerPage}
+                        searchType={this.state.searchType}
+                        currentWebsites={this.props.currentWebsites}
+                        increaseAccessCount={this.increaseAccessCount}
+                        setCurrentWebsites={this.setCurrentWebsites}>
+                    </Results>
+                </div>
             </div>
         );
     }

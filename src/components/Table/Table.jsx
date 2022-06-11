@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import useTable from "../../hooks/useTable";
 import styles from "./Table.module.css";
-import TableFooter from "./TableFooter";
+import TableFooter from "./TableFooter/TableFooter.jsx";
 
 const Table = ({ data, rowsPerPage, deleteWebsite, clickedURL }) => {
   const [page, setPage] = useState(1);

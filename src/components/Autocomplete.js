@@ -132,10 +132,16 @@ class Autocomplete extends Component {
             } else {
                 suggestionsListComponent = (
                     <div className="no-suggestions">
-                        <em>No suggestions</em>
+                        <em>No Autofill Suggestions</em>
                     </div>
                 );
             }
+        } else if (!userInput) {
+            suggestionsListComponent = (
+                <div className="no-suggestions">
+                    <em>No search terms entered yet</em>
+                </div>
+            );
         }
 
         return (
