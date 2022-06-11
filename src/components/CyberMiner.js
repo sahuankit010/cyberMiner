@@ -1,8 +1,11 @@
 import React from 'react';
 import '../App.css';
 import Results from './Results'
-import CheckBox from './CheckBox';
-import DropDown from './DropDown';
+import AlphabeticalResultsCheckBox from './AlphabeticalResultsCheckBox'
+import FilterOutSymbolsCheckBox from './FilterOutSymbolsCheckBox';
+import FrequentlyAccessedCheckBox from './FrequentlyAccessedCheckbox';
+import ResultsPerPageDropDown from './ResultsPerPageDropDown';
+import SearchTypeDropDown from './SearchTypeDropDown';
 import websites from '../Websites'
 import Autocomplete from './Autocomplete';
 
@@ -76,13 +79,13 @@ class CyberMiner extends React.Component {
                 <h1 style={{ color: '#154734' }}>Cyber Miner</h1>
                 <div><Autocomplete suggestions={this.suggestions} setSearchValue={this.setSearchValue}></Autocomplete></div>
                 <div>
-                    <label>Alphabetical Results:<CheckBox setAttribute={this.setIsAlphabetical}></CheckBox></label>
-                    <label className="Element">Frequently Accessed:<CheckBox setAttribute={this.setIsFrequentlyAccessed}></CheckBox></label>
-                    <label>&nbsp;Filter out symbols:<CheckBox setAttribute={this.setIsFiltered}></CheckBox></label>
+                    <AlphabeticalResultsCheckBox setAttribute={this.setIsAlphabetical}></AlphabeticalResultsCheckBox>
+                    <span className="Element"><FrequentlyAccessedCheckBox setAttribute={this.setIsFrequentlyAccessed}></FrequentlyAccessedCheckBox></span>
+                    <FilterOutSymbolsCheckBox setAttribute={this.setIsFiltered}></FilterOutSymbolsCheckBox>
                 </div>
                 <div>
-                    <label className="Element"> Search Type:&nbsp;<DropDown setAttribute={this.setSearchType} options={this.searchTypes}></DropDown></label>
-                    <label > &nbsp;Results Per Page:&nbsp;<DropDown setAttribute={this.setNumberPerPage} options={this.pageOptions}></DropDown></label>
+                    <span className="Element"><SearchTypeDropDown setAttribute={this.setSearchType} options={this.searchTypes}></SearchTypeDropDown></span>
+                    <ResultsPerPageDropDown setAttribute={this.setNumberPerPage} options={this.pageOptions}></ResultsPerPageDropDown>
                 </div>
                 <div className="Element">
                     <Results
