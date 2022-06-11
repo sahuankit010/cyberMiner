@@ -6,28 +6,18 @@ class Autocomplete extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
-            // The active selection's index
             activeSuggestion: 0,
-            // The suggestions that match the user's input
             filteredSuggestions: [],
-            // Whether or not the suggestion list is shown
             showSuggestions: false,
-            // What the user has entered
             userInput: ""
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.setSearchValue(this.state.value);
+        this.props.setSearchValue(this.state.userInput);
     }
     static propTypes = {
         suggestions: PropTypes.instanceOf(Array)
@@ -51,8 +41,7 @@ class Autocomplete extends Component {
             activeSuggestion: 0,
             filteredSuggestions,
             showSuggestions: true,
-            userInput: e.currentTarget.value,
-            value: e.currentTarget.value
+            userInput: e.currentTarget.value
         });
     };
 
@@ -62,7 +51,6 @@ class Autocomplete extends Component {
             filteredSuggestions: [],
             showSuggestions: false,
             userInput: e.currentTarget.innerText,
-            value: e.currentTarget.innerText
         });
 
     };
