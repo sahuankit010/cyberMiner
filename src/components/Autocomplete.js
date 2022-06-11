@@ -52,8 +52,13 @@ class Autocomplete extends Component {
             showSuggestions: false,
             userInput: e.currentTarget.innerText,
         });
-
     };
+
+    onBlur = e => {
+        this.setState({
+            showSuggestions: false
+        });
+    }
 
     onKeyDown = e => {
         const { activeSuggestion, filteredSuggestions } = this.state;
@@ -86,6 +91,7 @@ class Autocomplete extends Component {
         const {
             onChange,
             onClick,
+            onBlur,
             onKeyDown,
             state: {
                 activeSuggestion,
@@ -140,6 +146,7 @@ class Autocomplete extends Component {
                         <input type="text"
                             onChange={onChange}
                             onKeyDown={onKeyDown}
+                            onBlur={onBlur}
                             value={userInput} />
                     </label>
                     <input type="submit" value="Submit" />
