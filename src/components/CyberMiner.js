@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.css';
-import SearchBox from './SearchBox';
 import Results from './Results'
 import CheckBox from './CheckBox';
 import DropDown from './DropDown';
 import websites from '../Websites'
+import Autocomplete from './Autocomplete';
 
 class CyberMiner extends React.Component {
     constructor(props) {
@@ -22,6 +22,9 @@ class CyberMiner extends React.Component {
 
     searchTypes = ['OR', 'AND', 'NOT']
     pageOptions = [2, 5, 10]
+    suggestions = websites.data.map(website => {
+        return website.description;
+    })
 
     setSearchValue = (value) => {
         this.setState({
@@ -71,7 +74,7 @@ class CyberMiner extends React.Component {
         return (
             <div className="App">
                 <h1 style={{ color: '#154734' }}>Cyber Miner</h1>
-                <SearchBox setSearchValue={this.setSearchValue}></SearchBox>
+                <div><Autocomplete suggestions={this.suggestions} setSearchValue={this.setSearchValue}></Autocomplete></div>
                 <div>
                     <label>Alphabetical Results:<CheckBox setAttribute={this.setIsAlphabetical}></CheckBox></label>
                     <label>Frequently Accessed:<CheckBox setAttribute={this.setIsFrequentlyAccessed}></CheckBox></label>

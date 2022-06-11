@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import websites from './Websites'
 import CyberMiner from './components/CyberMiner';
+import './components/styles.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <CyberMiner currentWebsites={this.state.currentWebsites} increaseAccessCount={this.increaseAccessCount} setCurrentWebsites={this.setCurrentWebsites}></CyberMiner>
         <CyberMiner currentWebsites={this.state.currentWebsites} increaseAccessCount={this.increaseAccessCount} setCurrentWebsites={this.setCurrentWebsites}></CyberMiner>
       </div>
