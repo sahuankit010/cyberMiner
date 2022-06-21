@@ -55,9 +55,9 @@ class Autocomplete extends Component {
     };
 
     onBlur = e => {
-        this.setState({
-            showSuggestions: false
-        });
+        // this.setState({
+        //     showSuggestions: false
+        // });
     }
 
     onKeyDown = e => {
@@ -126,7 +126,7 @@ class Autocomplete extends Component {
             } else {
                 suggestionsListComponent = (
                     <div className="no-suggestions">
-                        <em>No Autofill Suggestions</em>
+                        <em>No Results</em>
                     </div>
                 );
             }
@@ -136,7 +136,7 @@ class Autocomplete extends Component {
                     <em>No search terms entered yet</em>
                 </div>
             );
-        }
+        } 
 
         return (
             <Fragment>
