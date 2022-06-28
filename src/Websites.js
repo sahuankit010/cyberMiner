@@ -1,17 +1,17 @@
 const websites = {
     "data": [
         {
-            "description": "google search",
+            "description": "Google search is provided by Google",
             "URL": "https://www.google.com/",
             "timesAccessed": 0
         },
         {
-            "description": "bing search",
+            "description": "Bing search is made by Microsoft",
             "URL": "https://www.bing.com/",
             "timesAccessed": 0
         },
         {
-            "description": "duck search",
+            "description": "DuckDuckGo search emphesizes privacy",
             "URL": "https://duckduckgo.com/",
             "timesAccessed": 0
         },
