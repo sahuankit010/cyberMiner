@@ -43,7 +43,6 @@ class Autocomplete extends Component {
             }
             return true;
         })
-        console.log(mostInput)
         var userInput;
         if(e.currentTarget.value[e.currentTarget.value.length - 1] === ' ') {
             userInput = ' ';
@@ -74,10 +73,6 @@ class Autocomplete extends Component {
             showSuggestions: false,
             userInput: this.state.mostInput + e.currentTarget.innerText
         });
-        //IM THINKING THAT ON THE USERINPUT THING ABOVE, YOU CAN HAVE SOMETHING LIKE WHOLEINPUT + E.CURRENTtARGET.INNERTEXT
-        // SO YOU NEED A WAY TO GET EVERYTHING EXCEPT THE LAST WORD IN A STRING + THE AUTOFILL SUGGESTION. 
-        console.log(e.currentTarget.innerText)
-        console.log(e.currentTarget.value)
     };
 
     onBlur = e => {
