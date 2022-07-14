@@ -9,7 +9,8 @@ class Autocomplete extends Component {
             activeSuggestion: 0,
             filteredSuggestions: [],
             showSuggestions: false,
-            userInput: ""
+            userInput: "",
+            mostInput: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +30,26 @@ class Autocomplete extends Component {
 
     onChange = e => {
         const { suggestions } = this.props;
-        const userInput = e.currentTarget.value;
+
+
+        var mostInput = ''
+
+        var wholeInput = e.currentTarget.value.split(" ");
+        wholeInput.map(word => {
+            if(wholeInput[wholeInput.length - 1] === word){
+                
+            } else {
+                mostInput = mostInput + word + ' ';
+            }
+            return true;
+        })
+        var userInput;
+        if(e.currentTarget.value[e.currentTarget.value.length - 1] === ' ') {
+            userInput = ' ';
+        } else {
+            userInput = wholeInput[wholeInput.length - 1];
+        }
+
 
         // Filter our suggestions that don't contain the user's input
         const filteredSuggestions = suggestions.filter(
@@ -41,7 +61,8 @@ class Autocomplete extends Component {
             activeSuggestion: 0,
             filteredSuggestions,
             showSuggestions: true,
-            userInput: e.currentTarget.value
+            userInput: e.currentTarget.value,
+            mostInput: mostInput
         });
     };
 
@@ -50,7 +71,7 @@ class Autocomplete extends Component {
             activeSuggestion: 0,
             filteredSuggestions: [],
             showSuggestions: false,
-            userInput: e.currentTarget.innerText,
+            userInput: this.state.mostInput + e.currentTarget.innerText
         });
     };
 

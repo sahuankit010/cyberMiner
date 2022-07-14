@@ -12,7 +12,7 @@ const websites = {
         },
         {
             "description": "DuckDuckGo search emphesizes privacy",
-            "URL": "https://duckduckgo.com/",
+            "URL": "https://www.duckduckgo.com/",
             "timesAccessed": 0
         },
         {
@@ -27,12 +27,12 @@ const websites = {
         },
         {
             "description": "yandex search",
-            "URL": "https://yandex.com/",
+            "URL": "ttps://www.yandex.com/",
             "timesAccessed": 0
         },
         {
             "description": "ask search",
-            "URL": "https://www.ask.com/",
+            "URL": "ttps://www.ask.com/",
             "timesAccessed": 0
         },
         {

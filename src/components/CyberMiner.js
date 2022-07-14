@@ -25,8 +25,18 @@ class CyberMiner extends React.Component {
 
     searchTypes = ['AND', 'OR', 'NOT']
     pageOptions = [3, 5, 10]
+    tempSuggestions = []
+    uniqSuggestions = [];
     suggestions = websites.data.map(website => {
-        return website.description;
+        // return website.description;
+
+        website.description.trim().split(/ +/).map(word => {
+            this.tempSuggestions.push(word);
+            return true;
+        })
+
+        this.uniqSuggestions = [...new Set(this.tempSuggestions)];
+        return this.testSuggestions;
     })
 
     setSearchValue = (value) => {
@@ -77,7 +87,7 @@ class CyberMiner extends React.Component {
         return (
             <div className="App">
                 <h1 style={{ color: '#154734' }}>Cyber Miner</h1>
-                <div><Autocomplete suggestions={this.suggestions} setSearchValue={this.setSearchValue}></Autocomplete></div>
+                <div><Autocomplete suggestions={this.uniqSuggestions} setSearchValue={this.setSearchValue}></Autocomplete></div>
                 <div>
                     <AlphabeticalResultsCheckBox setAttribute={this.setIsAlphabetical}></AlphabeticalResultsCheckBox>
                     <span className="Element"><FrequentlyAccessedCheckBox setAttribute={this.setIsFrequentlyAccessed}></FrequentlyAccessedCheckBox></span>

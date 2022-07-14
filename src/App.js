@@ -7,8 +7,20 @@ import './components/styles.css'
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+   const validWebsite = new RegExp(
+    '(http|ftp|https)://[w-]+(.[w-]+)+([w.,@?^=%&amp;:/~+#-]*[w@?^=%&amp;/~+#-])?'
+ );
+    var filteredWebsites = websites.data.filter(website => {
+      if(website.URL.match(validWebsite)){
+        return true
+      } else {
+        return false;
+      }
+    })
+
     this.state = {
-      currentWebsites: websites.data,
+      currentWebsites: filteredWebsites
     };
   }
 
